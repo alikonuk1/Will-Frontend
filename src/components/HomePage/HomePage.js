@@ -1,8 +1,8 @@
 import styles from "../../../styles/Home.module.css";
-import MintNFT from "../MintNFT";
+import setKey from "../setKey";
 import { useState } from "react";
 import { Box } from "@mui/system";
-import CreateERC721SB from "../CreateERC721SB";
+import CreateWill from "../CreateWill";
 import { Typography } from "@mui/material";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
       <p className={styles.desc}>Smth smth</p>
 
       {contractAddress ? (
-        <MintNFT contractAddress={contractAddress} />
+        <DeployWill contractAddress={contractAddress} />
       ) : (
         <Box
           sx={{
@@ -28,7 +28,7 @@ const HomePage = () => {
           <Typography variant="h5" color="#000000">
             Get started: deploy your Will contract.
           </Typography>
-          <CreateERC721SB onDeployed={setContractAddress} />
+          <CreateWill onDeployed={setContractAddress} />
         </Box>
       )}
     </>

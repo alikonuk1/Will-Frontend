@@ -6,7 +6,7 @@ import { useAccount, useContract, useNetwork, useSigner } from "wagmi";
 import { toast } from "react-toastify";
 import getFactoryAddress from "../../utils/getFactoryAddress";
 
-const ButtonCreateERC721SB = ({ onDeployed, name, symbol, tokenURI, owner }) => {
+const ButtonCreateWill = ({ onDeployed, owner, guardian, expiration}) => {
   const { data: signer } = useSigner();
   const { data: account } = useAccount();
   const { activeChain } = useNetwork();
@@ -23,16 +23,16 @@ const ButtonCreateERC721SB = ({ onDeployed, name, symbol, tokenURI, owner }) => 
       toast.error("Please connect your wallet");
       return;
     }
-    setPendingTx("Sign the transaction for deploying your ERC721SB smart contract.");
+    setPendingTx("Sign the transaction for deploying your Will smart contract.");
 
-    const mintPrice = contract.MintPrice();
+    const price = contract.price();
 
     var overrideOptions = {
-      value: mintPrice
+      value: price
     };
 
-    const tx = await contract.buildERC721SB(name, symbol, tokenURI, owner, overrideOptions);
-    setPendingTx("Deploying ERC721SB contract.");
+    const tx = await contract.buildWill(owner, guardian, expiration, overrideOptions);
+    setPendingTx("Deploying Will contract.");
     const receipt = await tx.wait();
     onDeployed?.(receipt?.events?.[0]?.args?._contract);
   };
@@ -56,7 +56,7 @@ const ButtonCreateERC721SB = ({ onDeployed, name, symbol, tokenURI, owner }) => 
           onClick={handleButtonClick}
           disabled={pendingTx}
         >
-          Create Smart Contract
+          Deploy Will
         </Button>
       )}
       <PendingTxModal pendingTx={pendingTx} />
@@ -64,4 +64,4 @@ const ButtonCreateERC721SB = ({ onDeployed, name, symbol, tokenURI, owner }) => 
   );
 };
 
-export default ButtonCreateERC721SB;
+export default ButtonCreateWill;

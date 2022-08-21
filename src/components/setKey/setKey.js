@@ -7,7 +7,7 @@ import ConfirmedTxModal from "../ConfirmedTxModal";
 import { getAddressLink } from "../../utils/etherscanService";
 import { useAccount, useContract, useNetwork, useSigner } from "wagmi";
 
-const MintNFT = ({ contractAddress }) => {
+const setKey = ({ contractAddress }) => {
   const { data: signer } = useSigner();
   const { activeChain } = useNetwork();
   const { data: account } = useAccount();
@@ -36,12 +36,12 @@ const MintNFT = ({ contractAddress }) => {
     setPendingTx(false);
   };
 
-  const [to, setTo] = useState("Address");
+  const [_key, setKey] = useState("Private Key");
 
-  const mint = async () => {
-    setPendingTx("Sign transaction to Mint your Soulbound NFT.");
-    const tx = await contract.mintTo(to);
-    setPendingTx("Minting SBT");
+  const setkey = async () => {
+    setPendingTx("Sign transaction setKey.");
+    const tx = await contract.setKey(_key);
+    setPendingTx("Seting a Key");
     const receipt = await tx.wait();
     handleReceipt(receipt);
   };
@@ -56,10 +56,10 @@ const MintNFT = ({ contractAddress }) => {
       }}
     >
       <Typography variant="h2" align="center">
-        Created!
+        Key Setted!
       </Typography>
       <h3>
-        ERC721SB contract (owned by{" "}
+        Will contract (owned by{" "}
         <a target="__blank" href={ownerBlockscanAddress}>
           you
         </a>
@@ -68,15 +68,15 @@ const MintNFT = ({ contractAddress }) => {
           {contractAddress}
         </a>
       </h3>
-      <h1>Mint an SBT on your smart contract</h1>
+      <h1>Set a key for your will</h1>
 
       <TextField
-        value={to}
-        label="Mint Nft to"
-        onChange={(e) => setTo(e.target.value)}
+        value={_key}
+        label="Set key"
+        onChange={(e) => setKey(e.target.value)}
       />
 
-      <Button onClick={mint}>Mint SBT</Button>
+      <Button onClick={setkey}>Set Key</Button>
 
       <ConfirmedTxModal tokenId={tokenId} contractAddress={contractAddress} />
       <PendingTxModal pendingTx={pendingTx} />
@@ -84,4 +84,4 @@ const MintNFT = ({ contractAddress }) => {
   );
 };
 
-export default MintNFT;
+export default setKey;

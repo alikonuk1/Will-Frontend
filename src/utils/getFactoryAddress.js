@@ -1,7 +1,7 @@
 const getFactoryAddress = (chainId) => {
   if (chainId === 5) {
     // Goerli
-    return "0xE7FC95F479Ae77ad12D1f2A3Ca30B8c6368Db610";
+    return "0x7E0175Bc795c117E6f01B2E4e5dCb85bd7EFae29";
   }
   if (chainId === 137) {
     // Polygon

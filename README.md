@@ -4,7 +4,7 @@
 ## Deployed Factory Contracts
 
 - `Ethereum` - [To be deployed..](https://etherscan.io)
-- `Goerli` - [0xE7FC95F479Ae77ad12D1f2A3Ca30B8c6368Db610](https://goerli.etherscan.io/address/0xE7FC95F479Ae77ad12D1f2A3Ca30B8c6368Db610#code)
+- `Goerli` - [0x7E0175Bc795c117E6f01B2E4e5dCb85bd7EFae29](https://goerli.etherscan.io/address/0x7E0175Bc795c117E6f01B2E4e5dCb85bd7EFae29#code)
 
 
 ## Technologies used:

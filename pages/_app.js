@@ -16,7 +16,7 @@ const { chains, provider } = configureChains(
   [publicProvider()]
 );
 const { connectors } = getDefaultWallets({
-  appName: "NFT Factory",
+  appName: "Will Factory",
   chains,
 });
 const wagmiClient = createClient({
