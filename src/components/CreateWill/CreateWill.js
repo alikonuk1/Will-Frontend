@@ -16,8 +16,8 @@ const CreateWill = ({ onDeployed }) => {
   );
 
   const [owner, setOwner] = useState(account?.address);
-  const [guardian, setGuardian] = useState("Guardian");
-  const [expiration, setExpiration] = useState("333");
+  const [guardian, setGuardian] = useState("");
+  const [expiration, setExpiration] = useState("");
 
   return (
     <Box
